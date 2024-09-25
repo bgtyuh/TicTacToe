@@ -13,7 +13,7 @@ def main():
     controller = TicTacToeController(model, view)
 
     # Démarrer le jeu
-    controller.play_game()
+    controller.start_game()
 
 
 if __name__ == "__main__":

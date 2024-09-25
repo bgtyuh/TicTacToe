@@ -64,3 +64,11 @@ class TicTacToeView:
         while replay not in ['y', 'n']:
             replay = input("Do you want to start a new game? (y/n): ").lower()
         return replay == 'y'
+
+    @staticmethod
+    def ask_for_opponent():
+        """Demande si l'utilisateur veut jouer contre un autre joueur ou contre l'ordinateur"""
+        opponent = ''
+        while opponent not in ['h', 'c']:
+            opponent = input("Do you want to play against a human (h) or the computer (c)?: ").lower()
+        return opponent
