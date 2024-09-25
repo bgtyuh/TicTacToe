@@ -4,16 +4,20 @@ from controller import TicTacToeController
 
 
 def main():
-    # Choisir la taille de la grille
-    n = int(input("Choose the size of the grid (e.g., 3 for a 3x3 grid): "))
-
-    # Initialisation du modèle, de la vue et du contrôleur
+    n = 3  # Taille de la grille
     model = TicTacToeModel(n)
-    view = TicTacToeView()
-    controller = TicTacToeController(model, view)
 
-    # Démarrer le jeu
-    controller.start_game()
+    # Créer le contrôleur
+    controller = TicTacToeController(model, None)  # Initialisation avec "None" pour la vue temporairement
+
+    # Créer la vue et l'associer au contrôleur
+    view = TicTacToeView(controller, n)
+
+    # Assigner la vue au contrôleur après sa création
+    controller.view = view
+
+    # Démarrer la boucle principale de Tkinter
+    view.start()
 
 
 if __name__ == "__main__":

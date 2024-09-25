@@ -1,12 +1,12 @@
 class TicTacToeModel:
-    def __init__(self, n):
+    def __init__(self, n=3):
         self.n = n
         self.grid = [[0 for _ in range(n)] for _ in range(n)]
-        self.current_player = 1  # 1 for O, -1 for X
+        self.current_player = 1  # 1 pour "O", -1 pour "X"
         self.moves = 0
 
     def play_turn(self, row, col):
-        """Jouer un tour en fonction des coordonnées (row, col)"""
+        """Joue un coup si la case est libre"""
         if self.grid[row][col] == 0:
             self.grid[row][col] = self.current_player
             self.current_player *= -1
@@ -15,14 +15,15 @@ class TicTacToeModel:
         return False
 
     def check_winner(self, row, col):
-        """Vérifie s'il y a un gagnant après le coup joué"""
+        """Vérifie si un joueur a gagné"""
         n = self.n
+        player = -self.current_player  # Le joueur qui vient de jouer
 
-        # Vérification de la ligne et de la colonne
+        # Vérifie la ligne et la colonne
         if abs(sum(self.grid[row])) == n or abs(sum(self.grid[i][col] for i in range(n))) == n:
             return True
 
-        # Vérification des diagonales
+        # Vérifie les diagonales
         if row == col and abs(sum(self.grid[i][i] for i in range(n))) == n:
             return True
 
@@ -32,7 +33,7 @@ class TicTacToeModel:
         return False
 
     def is_draw(self):
-        """Vérifie si la partie est nulle"""
+        """Vérifie si le jeu est nul"""
         return self.moves == self.n ** 2
 
     def reset(self):
