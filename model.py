@@ -17,7 +17,6 @@ class TicTacToeModel:
     def check_winner(self, row, col):
         """Vérifie s'il y a un gagnant après le coup joué"""
         n = self.n
-        current_player = -self.current_player  # Le joueur actuel après avoir changé
 
         # Vérification de la ligne et de la colonne
         if abs(sum(self.grid[row])) == n or abs(sum(self.grid[i][col] for i in range(n))) == n:
@@ -39,5 +38,4 @@ class TicTacToeModel:
     def reset(self):
         """Réinitialise la grille pour une nouvelle partie"""
         self.grid = [[0 for _ in range(self.n)] for _ in range(self.n)]
-        self.current_player = 1
         self.moves = 0

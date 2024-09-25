@@ -17,9 +17,6 @@ class TicTacToeController:
             # Affiche la grille actuelle
             self.view.display_grid(self.model.grid)
 
-            # Affiche les scores
-            self.view.display_score(self.score_o, self.score_x)
-
             # Récupère le coup du joueur
             row, col = self.view.get_player_input(self.model.n)
 
@@ -37,6 +34,7 @@ class TicTacToeController:
                     self.score_o += 1
                 else:  # Le joueur 'X' a gagné
                     self.score_x += 1
+                self.view.display_score(self.score_o, self.score_x)
                 game_over = True
 
             # Vérifie si la partie est nulle
@@ -49,3 +47,16 @@ class TicTacToeController:
         # Demande si l'utilisateur veut rejouer
         if self.view.ask_for_replay():
             self.play_game()
+        else:
+            self.display_final_score()
+
+    def display_final_score(self):
+        """Affiche le score final lorsque le joueur quitte."""
+        self.view.clear_console()
+        print("Game Over!")
+        if self.score_o > self.score_x:
+            print(f"Final Score: Player O wins with {self.score_o} win(s) | Player X: {self.score_x} win(s)")
+        elif self.score_x > self.score_o:
+            print(f"Final Score: Player X wins with {self.score_x} win(s) | Player O: {self.score_o} win(s)")
+        else:
+            print(f"Final Score: It's a tie! Both players won {self.score_o} time(s)")

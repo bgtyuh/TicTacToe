@@ -1,15 +1,8 @@
-import os
-import platform
-
 class TicTacToeView:
     @staticmethod
     def clear_console():
-        """Efface la console pour garder un affichage propre."""
-        # Utilisation de la commande clear ou cls selon l'OS
-        if platform.system() == "Windows":
-            os.system('cls')
-        else:
-            os.system('clear')
+        """Simule l'effacement de la console en affichant des lignes vides"""
+        print("\n" * 50)  # Affiche 50 lignes vides pour "nettoyer" la console
 
     @staticmethod
     def display_grid(grid):
