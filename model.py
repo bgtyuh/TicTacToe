@@ -38,4 +38,8 @@ class TicTacToeModel:
     def reset(self):
         """Réinitialise la grille pour une nouvelle partie"""
         self.grid = [[0 for _ in range(self.n)] for _ in range(self.n)]
+        # After each game the next one should start with player O
+        # otherwise the player who finished last would start
+        # which is not the expected behaviour.
+        self.current_player = 1
         self.moves = 0
