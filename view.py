@@ -32,8 +32,8 @@ class TicTacToeView:
         """Récupère les coordonnées du joueur (ligne, colonne)"""
         while True:
             try:
-                row = int(input(f"Chose a line (1-{n}): ")) - 1
-                col = int(input(f"Chose a column (1-{n}): ")) - 1
+                row = int(input(f"Choose a line (1-{n}): ")) - 1
+                col = int(input(f"Choose a column (1-{n}): ")) - 1
                 if 0 <= row < n and 0 <= col < n:
                     return row, col
                 else:
